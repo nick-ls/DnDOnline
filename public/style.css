@@ -1,0 +1,334 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400');
+html,body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	font-family: "Raleway", sans-serif;
+	font-size: 1.2em;
+	background: rgb(36, 36, 36);
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+	padding: 10px 5px 10px 5px;
+	outline: none;
+	border: 5px solid #BB4343;
+	text-align: center;
+	font-size: 0.8em;
+	width: -webkit-fill-available;
+	width: -moz-available;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+canvas {
+	border: 1px solid black;
+}
+#toolPanel {
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	flex-direction: column;
+	background: rgb(82,82,82);
+	height: 100%;
+}
+#toolPanel > div {
+	width: -webkit-fill-available;
+	width: -moz-available;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	justify-content: center;
+	padding: 5px;
+}
+#field {
+	cursor: crosshair;
+}
+#app {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.modal {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.container {
+	padding: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	background-color: #F0F0F0;
+	z-index: -2;
+}
+#createContainer {
+	min-width: 20%;
+}
+.button {
+	width: -webkit-fill-available;
+	width: -moz-available;
+	position: relative;
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	padding: 20px;
+	font-weight: bold;
+	border: 5px solid #BB4343;
+	color: #BB4343;
+	text-align: center;
+	cursor: pointer;
+}
+#createParams, #joinCode {
+	z-index: 5;
+	background: rgba(0,0,0,0.7);
+}
+#joinCode > div:before {
+	content: "Join Code: \00A0";
+}
+.button > span {
+	transition: color 0.2s;
+	z-index: 10;
+}
+.button:before {
+	content: "";
+	transition: border-radius 0.2s, height 0.2s, width 0.2s, top 0.2s, left 0.2s;
+	background-color: #606060;
+	border-radius: 100%;
+	width: 0;
+	height: 0;
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	z-index: -1;
+}
+.button:hover:before {
+	transition: border-radius 0.2s, height 0.2s, width 0.2s, top 0.2s, left 0.2s;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 0;
+}
+.button:hover > span {
+	transition: color 0.2s;
+	color: white;
+}
+#create {
+	margin-top: 10px;
+}
+.bigText {
+	margin-top: 20px;
+	padding: 10px 5px 10px 5px;
+	outline: none;
+	border: 5px solid #BB4343;
+	text-align: center;
+	font-size: 0.8em;
+}
+input[type="radio"] {
+	display: none;
+}
+input[type="radio"]:checked + label.labelButton {
+	background: rgba(255,255,255,0.15);
+}
+.labelButton {
+	-webkit-user-select: none;
+	user-select: none;
+	-moz-user-select: none;
+	width: -webkit-fill-available;
+	width: -moz-available;
+	color: white;
+	width: 35px;
+	height: 35px;
+	padding: 4px;
+	border-radius: 2px;
+}
+.labelButton > img {
+	filter: invert(1);
+	width: 35px;
+	height: 35px;
+}
+#circleTools {
+	flex-direction: column;
+}
+#enemySpan {
+	font-size: 0.7em;
+}
+#editPanel {
+	position: fixed;
+	top: 0;
+	right: 0;
+	height: 100%;
+	width: 15%;
+	padding: 5px;
+	background: rgb(82,82,82);
+	color: white;
+}
+input[type="color"] {
+	display: none;
+}
+label#dispColor{
+	display: block;
+	width: 40px;
+	height: 40px;
+	background: black;
+	border: 1px solid white;
+	box-shadow: 0 0 0 1px black;
+	cursor: pointer;
+}
+.row, #draggers, #colors{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+}
+#draggers {
+	flex-direction: column;
+}
+#colors {
+	align-items: unset;
+	background: #404040;
+	margin-bottom: 10px;
+	border-radius: 10px;
+}
+.smallText {
+	text-align: left;
+	width: 3em;	
+	color: white;
+	background: rgb(58,58,58);
+	border: none;
+	padding: 5px;
+	margin: 5px;
+}
+.smallText:focus {
+	color: black;
+	background: white;
+	outline: none;
+}
+#h::-webkit-slider-runnable-track {
+    background: -webkit-linear-gradient(left, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+    background: linear-gradient(to right, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 10px 0;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: #D3D3D3;
+}
+input[type=range]::-webkit-slider-thumb {
+  height: 16px;
+  width: 10px;
+  background: rgba(0,0,0,0.6);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -4px;
+}
+#toolSettings {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+#toolSettings > div {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 15px;
+}
+#toolSettings > div > * {
+	margin: 5px;
+}
+input[type="text"] {
+	padding: 5px;
+}
+#entitySize {
+	flex-grow: 1;
+}
+.color {
+	width: calc(20% - 10px);
+	height: 30px;
+	border-radius: 25px;
+	background: black;
+	cursor: pointer;
+	display: block;
+}
+#colorTrain {
+	width: 100%;
+	max-height: 25%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: flex-start;
+	overflow-y: auto;
+	background: #404040;
+	border-radius: 10px;
+}
+#colorTrain > div{
+	margin: 5px;
+}
+.col {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-content: center;
+}
+div.inlinerow {
+	flex-direction: row !important;
+}
+#addColor {
+	width: 30px;
+	height: 30px;
+	background: #5E5E5E;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	align-self: center;
+	margin-top: 10px;
+	font-weight: bold;
+	cursor: pointer;
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+#colors > .col {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+#statuses {
+	font-size: 0.7em;
+	display: flex;
+	flex-direction: row;
+}
+#statuses > label {
+	margin-top: 0;
+}
+#leave {
+	padding: 5px;
+	border-radius: 5px;
+	background: #A22727;
+	user-select: none;
+	cursor: pointer;
+}

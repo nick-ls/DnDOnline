@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id="joinCode" class="modal" style="display: none;">
+	<div class="container"></div>
+</div>
+<div id="createParams" class="modal" style="display: none">
+	<div id="createContainer" class="container">
+		<input type="number" min="1" max="50" id="width" placeholder="Area width (in tiles)">
+		<input type="number" min="1" max="50" id="height" placeholder="Area height (in tiles)">
+		<div id="create" class="button"><span>Submit</span></div>
+	</div>
+</div>
+<div id="start" class="modal">
+	<div class="container">
+		<div id="createGame" class="button"><span>Create Game</span></div>
+		<input class="bigText" type="text" maxlength="6" id="gameID" placeholder="Join Game">
+	</div>
+</div>
+<div id="app">
+	<canvas id="field"></canvas>
+</div>
+<div id="toolPanel" style="display: none;">
+	<div>
+		<input type="radio" name="tool" id="drag" checked>
+		<label class="labelButton" for="drag">
+			<img src="./icons/drag.png" alt="Drag Tool">
+		</label>
+	</div>
+	<div>	
+		<input type="radio" name="tool" id="entity">
+		<label class="labelButton" for="entity">
+			<img src="./icons/entity.png" alt="Entity Brush">
+		</label>
+	</div>
+	<div>
+		<input type="radio" name="tool" id="tile">
+		<label class="labelButton" for="tile">
+			<img src="./icons/tile.png" alt="Tile Brush">
+		</label>
+	</div>
+	<div> 
+		<input type="radio" name="tool" id="wall">
+		<label class="labelButton" for="wall">
+			<img src="./icons/wall.png" alt="Wall Brush">
+		</label>
+	</div>	
+	<div>
+		<input type="radio" name="tool" id="erase">
+		<label class="labelButton" for="erase">
+			<img src="./icons/erase.png" alt="Eraser">
+		</label>
+	</div>
+	<div>
+		<input type="radio" name="tool" id="dropper">
+		<label class="labelButton" for="dropper">
+			<img src="./icons/dropper.png" alt="Dropper Tool">
+		</label>
+	</div>
+	<div>
+		<input type="radio" name="tool" id="target">
+		<label class="labelButton" for="target">
+			<img src="./icons/target.png" alt="Target Tool">
+		</label>
+	</div>
+</div>
+<div id="editPanel" style="display: none;">
+	<div id="colors">
+		<div class="col">
+			<input id="currentColor" type="color">
+			<label id="dispColor" for="currentColor" style="background-color: rgb(191, 64, 64);"></label>
+			<div id="addColor">+</div>
+		</div>
+		<div id="draggers">
+			<div class="row">
+				<input id="h" type="range" min="0" max="360" value="0">
+				<input class="smallText" id="htext" type="text" value="0">
+			</div>
+			<div class="row">
+				<input id="s" type="range" min="0" max="100" value="50">
+				<input class="smallText" id="stext" type="text" value="50">
+			</div>
+			<div class="row">
+				<input id="l" type="range" min="0" max="100" value="50">
+				<input class="smallText" id="ltext" type="text" value="50">
+			</div>
+		</div>
+	</div>
+	<div id="colorTrain">
+		<div class="color" style="background-color: rgb(191, 64, 64);"></div>
+		<div class="color" style="background-color: rgb(100, 200, 100);"></div>
+		<div class="color" style="background-color: rgb(0, 0, 0);"></div>
+		<div class="color" style="background-color: rgb(121, 77, 57);"></div>
+		<div class="color" style="background-color: rgb(218, 217, 71);"></div>
+	</div>
+	<div id="toolSettings">
+		<div>
+			<label for="entitySize">Entity Size:</label>
+			<div class="row">
+				<input id="entitySize" type="range" min="1" max="4" value="1">
+				<input class="smallText" id="sizetxt" type="text" value="1" disabled>
+			</div>
+		</div>
+		<div>
+			<label for="entitySize">Entity Name:</label>
+			<input id="entityName" type="text">
+		</div>
+		<!--<div class="inlinerow">
+			<label for="initiative">Initiative:</label>
+			<input class="smallText" id="initiative" type="text">
+		</div>-->
+		<div class="initiativeOrder"></div>
+		<div id="statuses">
+			<label for="poisoned"><input id="poisoned" type="checkbox">Poisoned</label>
+			<label for="blinded"><input id="blinded" type="checkbox">Blinded</label>
+			<label for="deafened"><input id="deafened" type="checkbox">Deafened</label>
+			<label for="charmed"><input id="charmed" type="checkbox">Charmed</label>
+			<label for="frightened"><input id="frightened" type="checkbox">Frightened</label>
+			<label for="grappled"><input id="grappled" type="checkbox">Grappled</label>
+			<label for="restrained"><input id="restrained" type="checkbox">Restrained</label>
+			<label for="incapacitated"><input id="incapacitated" type="checkbox">Incapacitated</label>
+			<label for="paralyzed"><input id="paralyzed" type="checkbox">Paralyzed</label>
+			<label for="petrified"><input id="petrified" type="checkbox">Petrified</label>
+			<label for="invisible"><input id="invisible" type="checkbox">Invisible</label>
+			<label for="unconscious"><input id="unconscious" type="checkbox">Unconscious</label>
+			<label for="dead"><input id="dead" type="checkbox">Dead</label>
+		</div>
+		<div class="row">
+			<div id="leave">Leave Game</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="render.js"></script>
+<script type="text/javascript" src="tools.js"></script>
+<script type="text/javascript" src="colorTransform.js"></script>
+<script type="text/javascript" src="socket.js"></script>
+<script type="text/javascript" src="app.js"></script>
+</body>
+</html>
