@@ -170,7 +170,6 @@ input[type="radio"]:checked + label.labelButton {
 	top: 0;
 	right: 0;
 	height: 100%;
-	width: 15%;
 	padding: 5px;
 	background: rgb(82,82,82);
 	color: white;
